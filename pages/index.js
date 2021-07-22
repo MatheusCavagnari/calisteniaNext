@@ -1,45 +1,34 @@
 import { useState } from 'react'
 
-
-
 function Imc() {
 
     const [imc, setImc] = useState(0);
-    const [altura, setAltura] = useState(0);
-    const [peso, setPeso] = useState(0);
-
 
     function calcularImc() {
+        var altura = document.getElementById('altura');
+        var peso = document.getElementById('peso');
 
-        console.log(peso)
-        console.log(altura)
-        //console.log(peso / Math.pow(altura, 2))
-        // setImc(peso / Math.pow(altura, 2));
+        setImc((peso.value / Math.pow(altura.value, 2)).toFixed(2));
     }
 
     return (
         <div className="container">
             <div>
                 <label htmlFor="">Informe a altura (m): </label>
-                <input type="text" onKeyDown={(text) => setAltura(text)} />
+                <input type="number" id="altura" />
             </div>
-
             <div>
                 <label htmlFor="">Informe o peso(Kg): </label>
-                <input type="text" onChange={(text) => setPeso(text)} />
+                <input type="number" id="peso" />
             </div>
-
             <div>
                 <button onClick={calcularImc}>Calcular</button>
             </div>
-
             <div>
                 {imc}
             </div>
-
         </div>
     )
-
 }
 
 export default Imc;
